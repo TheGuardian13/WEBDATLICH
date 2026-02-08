@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lịch khám</title>
+    <link rel="stylesheet" href="css/fluent.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- NAV -->
+        <aside class="nav">
+            <div class="nav-logo">PHÒNG KHÁM</div>
+            <a class="nav-item" href="dashboard.html">Dashboard</a>
+            <a class="nav-item active">Lịch khám</a>
+            <a class="nav-item">Bệnh nhân</a>
+            <a class="nav-item">Bác sĩ</a>
+        </aside>
+
+        <div class="main">
+
+            <div class="topbar">
+                <input class="search" placeholder="Tìm bệnh nhân, SĐT...">
+                <div>Lễ tân ▾</div>
+            </div>
+
+            <div class="content">
+
+                <h1>Quản lý lịch khám</h1>
+
+                <!-- FILTER -->
+                <div class="card" style="margin-bottom:16px;">
+                    Ngày:
+                    <input type="date">
+
+                    Bác sĩ:
+                    <select>
+                        <option>Tất cả</option>
+                        <option>BS A</option>
+                    </select>
+
+                    Trạng thái:
+                    <select>
+                        <option>Tất cả</option>
+                        <option>Chờ</option>
+                        <option>Đã xác nhận</option>
+                    </select>
+                </div>
+
+                <!-- TABLE -->
+                <div class="card table-card">
+                    <div class="table-card-header">
+                        Danh sách lịch khám
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Giờ</th>
+                                <th>Bệnh nhi</th>
+                                <th>SĐT</th>
+                                <th>Bác sĩ</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:00</td>
+                                <td>Lê Nam</td>
+                                <td>09xxx</td>
+                                <td>BS A</td>
+                                <td><span class="badge success">Đã xác nhận</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

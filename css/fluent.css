@@ -1,0 +1,212 @@
+:root {
+    --bg-app: #f3f2f1;
+    --bg-card: #ffffff;
+
+    --border: #edebe9;
+
+    --text-main: #323130;
+    --text-sub: #605e5c;
+
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --success: #107c10;
+    --warning: #f7630c;
+    --danger: #a4262c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Inter, system-ui, sans-serif;
+    background: var(--bg-app);
+    color: var(--text-main);
+}
+
+/* ======================
+   APP SHELL
+====================== */
+
+.app {
+    height: 100vh;
+    display: flex;
+}
+
+/* ======================
+   LEFT NAV
+====================== */
+
+.nav {
+    width: 240px;
+    background: #fff;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-logo {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.nav-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.nav-item:hover {
+    background: #f5f5f5;
+}
+
+.nav-item.active {
+    background: #e8f0fe;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ======================
+   MAIN
+====================== */
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ======================
+   TOP BAR
+====================== */
+
+.topbar {
+    height: 56px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.search {
+    width: 280px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+.search:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* ======================
+   CONTENT
+====================== */
+
+.content {
+    padding: 24px;
+    overflow-y: auto;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ======================
+   CARD
+====================== */
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+.card-number {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* ======================
+   TABLE
+====================== */
+
+.table-card {
+    padding: 0;
+}
+
+.table-card-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th,
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+thead {
+    background: #faf9f8;
+}
+
+tbody tr:hover {
+    background: #f5f5f5;
+}
+
+/* ======================
+   BADGE
+====================== */
+
+.badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge.pending {
+    background: #fff4ce;
+    color: #8a6d00;
+}
+
+.badge.success {
+    background: #dff6dd;
+    color: var(--success);
+}
+
+.badge.danger {
+    background: #fde7e9;
+    color: var(--danger);
+}

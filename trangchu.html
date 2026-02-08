@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phòng khám ABC</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- link đến CSS nút & form bạn đã chuẩn hóa -->
+    <style>
+        /* STYLE THÊM CHO TRANG CHỦ */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #0d6efd;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        .clinic-info {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .clinic-info h2 {
+            margin-top: 0;
+            color: #0d6efd;
+        }
+
+        .clinic-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER LOGO -->
+    <header class="header-logo">
+        <a href="trangchu.html" class="logo-link">
+            <img src="images/logo.png" alt="Logo phòng khám" class="logo">
+            <span class="company-name">Phòng khám Bác sĩ bên con</span>
+        </a>
+    </header>
+
+    <main>
+        <!-- Thông tin phòng khám -->
+        <div class="clinic-info">
+            <h2>PHÒNG KHÁM BÁC SĨ BÊN CON</h2>
+            <p>Địa chỉ: 88 Thanh Nhàn, Bạch Mai, Hà Nội</p>
+            <p>Điện thoại: 0999 999 999</p>
+            <p>Giờ làm việc: 07:00 – 20:00 (Thứ 2 – Chủ nhật)</p>
+        </div>
+
+        <!-- Các nút hành động -->
+        <div class="action-buttons">
+            <a href="index.html" class="btn btn--primary btn--block">
+                📝 Đặt lịch khám
+            </a>
+            <a href="tracuu.html" class="btn btn--secondary btn--block">
+                🔍 Tra cứu lịch khám
+            </a>
+            <a href="huylich.html" class="btn btn--danger btn--block">
+                ❌ Hủy lịch khám
+            </a>
+        </div>
+    </main>
+</body>
+
+</html>

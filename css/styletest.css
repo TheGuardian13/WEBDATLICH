@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #c0c9d4;
+    margin: 0;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header {
+    flex-basis: 100%;
+    background-color: brown;
+    padding: 30px;
+    margin: 5;
+}
+
+nav {
+    flex-basis: 100%;
+    background-color: bisque;
+    margin: 5px;
+    display: flex;
+}
+
+nav a {
+    padding: 20px;
+    overflow: auto;
+    text-decoration: none;
+    color: black;
+}
+
+nav a:hover {
+    background-color: rgb(182, 11, 11);
+    color: beige;
+}
+
+aside.left {
+    background-color: burlywood;
+    flex: 1 0;
+    padding: 20px;
+    margin: 5px;
+}
+
+aside.right {
+    background-color: rgb(131, 10, 131);
+    flex: 1 0;
+    padding: 20px;
+    margin: 5px;
+}
+
+article {
+    text-align: left;
+    background-color: rgb(0, 26, 255);
+    flex: 3 0;
+    padding: 20px 20px 100px;
+    margin: 5px;
+    font-weight: bold;
+    color: azure;
+}
+
+footer {
+    flex-basis: 100%;
+    background-color: rgb(72, 204, 116);
+    padding: 30px;
+    margin: 5;
+}

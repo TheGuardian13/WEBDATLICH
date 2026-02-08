@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hủy lịch khám</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- HEADER LOGO -->
+    <header class="header-logo">
+        <a href="trangchu.html" class="logo-link">
+            <img src="images/logo.png" alt="Logo phòng khám" class="logo">
+            <span class="company-name">Phòng khám Bác sĩ bên con</span>
+        </a>
+    </header>
+    <div class="result-card">
+        <div class="success">
+            <h1>❌ Hủy lịch khám</h1>
+            <p class="note">
+                Nhập số điện thoại và ngày khám để xem các lịch đã đặt.
+            </p>
+
+            <form id="lookupForm" class="summary">
+                <p>
+                    <label>📞 Số điện thoại</label>
+                    <input type="tel" id="phone" placeholder="VD: 0123456789" required>
+                </p>
+                <p>
+                    <label>📅 Ngày khám</label>
+                    <input type="date" id="date" required>
+                </p>
+
+                <div id="appointmentList" style="display:none;">
+                    <h3>📋 Các lịch đã đặt</h3>
+                    <ul id="list"></ul>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn--primary btn--block">
+                        🔍 Xem lịch đã đặt
+                    </button>
+                    <a href="index.html" class="btn btn--secondary btn--block">
+                        🔄 Đặt lịch mới
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/cancel.js"></script>
+</body>
+
+</html>

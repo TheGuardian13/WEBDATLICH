@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tra cứu lịch khám</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- HEADER LOGO -->
+    <header class="header-logo">
+        <a href="trangchu.html" class="logo-link">
+            <img src="images/logo.png" alt="Logo phòng khám" class="logo">
+            <span class="company-name">Phòng khám Bác sĩ bên con</span>
+        </a>
+    </header>
+    <div class="result-card">
+        <div class="success">
+            <h1>🔍 Tra cứu lịch khám</h1>
+            <p class="note">
+                Nhập số điện thoại và ngày khám để xem các lịch đã đặt. <br>
+                Nếu không thể đến theo lịch hẹn, anh/chị vui lòng hủy sớm để các bé khác có thể đặt lịch ❤️❤️❤️ <br>
+                Nếu quá giờ hẹn 10 phút mà trẻ chưa đến khám, phiếu đặt lịch sẽ không còn giá trị.
+            </p>
+
+            <form id="lookupForm" class="summary">
+                <p>
+                    <label>📞 Số điện thoại</label>
+                    <input type="tel" id="phone" maxlength="10" inputmode="numeric" placeholder="SĐT đặt lịch" required>
+                </p>
+                <p>
+                    <label>📅 Ngày khám</label>
+                    <input type="date" id="date" required>
+                </p>
+
+                <div id="appointmentList" style="display:none;">
+                    <h3>📋 Các lịch đã đặt</h3>
+                    <ul id="list"></ul>
+
+                    <!-- NÚT LƯU ẢNH – ẨN BAN ĐẦU -->
+                    <div id="lookupActions" class="center-action" style="display:none;" center>
+                        <button type="button" id="saveImage" class="btn btn--primary">
+                            📸 Lưu ảnh lịch đã đăng ký
+                        </button>
+                        <button id="cancelAppointment" class="btn btn--danger">
+                            ❌ Hủy lịch
+                        </button>
+                    </div>
+                    <!-- <button type="button" class="btn btn--secondary" onclick="savePDF()">
+                        📄 Lưu PDF lịch hẹn
+                    </button> -->
+                </div>
+
+        </div>
+
+        <div class="action-buttons">
+            <button type="submit" class="btn btn--primary btn--block">
+                🔍 Xem lịch đã đặt
+            </button>
+            <a href="index.html" class="btn btn--secondary btn--block">
+                🔄 Đặt lịch mới
+            </a>
+        </div>
+        </form>
+    </div>
+    <div id="capture-wrapper" class="capture-hidden">
+        <div class="capture-header">
+            <img src="images/logo.png" class="capture-logo">
+            <div class="capture-title">
+                <div class="clinic-name">Phòng khám Bác sĩ bên con</div>
+                <div class="clinic-sub">Phiếu xác nhận lịch khám</div>
+            </div>
+        </div>
+
+        <div id="ticketCapture"></div>
+        <p class="note">
+            📌 Quý phụ huynh vui lòng đưa trẻ đến phòng khám
+            <strong>trước giờ hẹn 10 phút</strong>. <br>
+            Nếu không thể đến theo lịch hẹn, anh/chị vui lòng hủy sớm để phòng khám phục vụ bé khác ❤️ <br>
+            Nếu quá giờ hẹn 10 phút mà trẻ chưa đến khám, phiếu đặt lịch sẽ không còn giá trị.
+        </p>
+
+        <p class="note">
+            🕓 <strong>Thời điểm đặt lịch:</strong>
+            <span id="createdAt"></span>
+        </p>
+
+        <div class="capture-footer">
+            📍 Địa chỉ: 88 Thanh Nhàn | ☎ 0985403030
+        </div>
+    </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script src="js/tracuu.js"></script>
+    <script>
+        window.addEventListener("pageshow", function (event) {
+            // Nếu trang được load từ cache (bấm Back)
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+    </script>
+</body>
+
+</html>

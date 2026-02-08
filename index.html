@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đặt lịch phòng khám</title>
+    <meta name="description" content="Đặt lịch khám nhanh chóng tại phòng khám nhi, tiết kiệm thời gian chờ đợi.">
+
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta property="og:title" content="Đặt lịch khám phòng khám nhi">
+    <meta property="og:description" content="Đặt lịch nhanh - không chờ đợi - tư vấn chuyên nghiệp.">
+    <meta property="og:image" content="https://example.com/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header-logo">
+        <a href="trangchu.html" class="logo-link">
+            <img src="images/logo.png" alt="Logo phòng khám" class="logo">
+            <span class="company-name">Phòng khám Bác sĩ bên con</span>
+        </a>
+    </header>
+
+    <!-- ================= CONTAINER ================= -->
+    <div class="container">
+
+        <h1>ĐẶT LỊCH KHÁM</h1>
+
+        <form id="bookingForm">
+
+            <!-- ========================= -->
+            <!-- THÔNG TIN BỆNH NHI -->
+            <!-- ========================= -->
+            <fieldset>
+                <legend>Thông tin bệnh nhi</legend>
+
+                <div class="form-row">
+                    <label for="hoTenTre">Họ tên trẻ</label>
+                    <input id="hoTenTre" name="HoTenTre" type="text" required placeholder="Vui lòng ghi đầy đủ họ tên">
+                </div>
+
+                <div class="form-row">
+                    <label for="ngaySinh">Ngày sinh</label>
+                    <input id="ngaySinh" name="NgaySinh" type="date" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="gioiTinh">Giới tính</label>
+                    <select id="gioiTinh" name="GioiTinh" class="select-small" required>
+                        <option value="">-- Chọn --</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- ========================= -->
+            <!-- THÔNG TIN PHỤ HUYNH -->
+            <!-- ========================= -->
+            <fieldset>
+                <legend>Thông tin phụ huynh</legend>
+
+                <div class="form-row">
+                    <label for="tenNguoiDat">Họ tên người đặt</label>
+                    <input id="tenNguoiDat" name="TenNguoiDat" type="text" required
+                        placeholder="Vui lòng ghi đầy đủ họ tên">
+                </div>
+
+                <div class="form-row">
+                    <label for="dienThoai">Số điện thoại</label>
+                    <input id="dienThoai" name="DienThoai" type="tel" maxlength="10" inputmode="numeric"
+                        placeholder="SĐT nên có Zalo" required>
+                </div>
+            </fieldset>
+
+            <!-- ========================= -->
+            <!-- CHỌN LỊCH KHÁM -->
+            <!-- ========================= -->
+            <fieldset>
+                <legend>Chọn lịch khám</legend>
+
+                <!-- NGÀY KHÁM -->
+                <div class="form-row">
+                    <label for="appointmentDate">Ngày khám</label>
+                    <input id="appointmentDate" name="NgayKham" type="date" required>
+                </div>
+
+                <!-- BÁC SĨ -->
+                <div class="form-row">
+                    <label for="doctorSelect">Bác sĩ khám</label>
+                    <select id="doctorSelect" name="ID_BacSi" class="select-large" required>
+                        <option value="">-- Chọn bác sĩ --</option>
+                    </select>
+                </div>
+
+                <!-- CA KHÁM -->
+                <div class="session-select">
+                    <input type="radio" name="ID_CaKham" id="ca-sang" value="1">
+                    <label for="ca-sang">☀️ Sáng</label>
+
+                    <input type="radio" name="ID_CaKham" id="ca-chieu" value="2">
+                    <label for="ca-chieu">🌤 Chiều</label>
+
+                    <input type="radio" name="ID_CaKham" id="ca-toi" value="3">
+                    <label for="ca-toi">🌙 Tối</label>
+                </div>
+
+                <!-- SLOT GIỜ -->
+                <div class="time-section">
+                    <div class="time-grid" id="time-slots"></div>
+
+                    <!-- slot thật gửi về SQL -->
+                    <input type="hidden" id="selectedSlotId" name="ID_Slot" required>
+                </div>
+
+                <!-- LÝ DO KHÁM -->
+                <div class="form-row">
+                    <label for="lyDoKham">Lý do khám</label>
+                    <input id="lyDoKham" name="LyDoKham" type="text" required
+                        placeholder="Vui lòng mô tả chi tiết triệu chứng của trẻ">
+                </div>
+
+                <!-- RESET -->
+                <button type="button" id="btnReset" class="btn-reset">
+                    🔃 Nhập lại
+                </button>
+
+            </fieldset>
+
+            <!-- ========================= -->
+            <!-- SUBMIT -->
+            <!-- ========================= -->
+            <div class="form-actions">
+                <button type="submit" id="btnDatLich" class="btn btn-primary">
+                    Xác nhận đặt lịch
+                </button>
+                <a href="tracuu.html" class="btn btn-secondary">
+                    🔍 Tra cứu lịch hẹn
+                </a>
+                <a href="https://www.facebook.com/bacsibencon" class="btn btn-facebook" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                        class="btn-icon">
+                    Facebook của Bác sĩ bên con
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- ================= JS ================= -->
+    <script src="js/index.js"></script>
+
+</body>
+
+
+
+
+</html>

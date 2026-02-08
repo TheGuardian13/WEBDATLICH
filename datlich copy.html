@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đặt lịch phòng khám</title>
+    <meta name="description" content="Đặt lịch khám nhanh chóng tại phòng khám nhi, tiết kiệm thời gian chờ đợi.">
+
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta property="og:title" content="Đặt lịch khám phòng khám nhi">
+    <meta property="og:description" content="Đặt lịch nhanh - không chờ đợi - tư vấn chuyên nghiệp.">
+    <meta property="og:image" content="https://example.com/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER LOGO -->
+    <header class="header-logo">
+        <a href="trangchu.html" class="logo-link">
+            <img src="images/logo.png" alt="Logo phòng khám" class="logo">
+            <span class="company-name">Phòng khám Bác sĩ bên con</span>
+        </a>
+    </header>
+    <div class="container">
+
+        <h1>ĐẶT LỊCH KHÁM</h1>
+
+        <form method="get" action="success.html">
+
+            <!-- THÔNG TIN BỆNH NHI -->
+            <fieldset>
+                <legend>Thông tin bệnh nhi</legend>
+
+                <label>
+                    Họ tên trẻ
+                    <input id="child-name" type="text" name="child_name" required>
+                </label>
+
+                <label>
+                    Ngày sinh
+                    <input type="date" name="child_dob" required>
+                </label>
+
+                <label>
+                    Giới tính
+                    <select name="child_gender" required>
+                        <option value="">-- Chọn --</option>
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                    </select>
+                </label>
+            </fieldset>
+
+            <!-- THÔNG TIN PHỤ HUYNH -->
+            <fieldset>
+                <legend>Thông tin phụ huynh</legend>
+
+                <label>
+                    Họ tên phụ huynh
+                    <input id="parent-name" type="text" name="parent_name" required>
+                </label>
+
+                <label>
+                    Số điện thoại (kết nối với Zalo)
+                    <input id="phone" type="tel" name="phone" required>
+                </label>
+            </fieldset>
+
+            <!-- THÔNG TIN LỊCH KHÁM -->
+            <fieldset>
+                <legend>Chọn lịch khám</legend>
+
+                <label>
+                    Ngày khám
+                    <input type="date" name="appointment_date" required>
+                </label>
+
+                <!-- CHỌN BUỔI -->
+                <div class="session-select">
+                    <input type="radio" name="session" id="morning" value="morning">
+                    <label for="morning">☀️ Buổi sáng</label>
+
+                    <input type="radio" name="session" id="afternoon" value="afternoon">
+                    <label for="afternoon">🌙 Buổi chiều</label>
+                </div>
+
+                <!-- SLOT BUỔI SÁNG -->
+                <div class="time-section" id="morning-slots">
+                    <div class="time-grid">
+                        <input type="radio" name="time" id="t0800" value="08:00"><label for="t0800">08:00</label>
+                        <input type="radio" name="time" id="t0815" value="08:15"><label for="t0815">08:15</label>
+                        <input type="radio" name="time" id="t0830" value="08:30"><label for="t0830">08:30</label>
+                        <input type="radio" name="time" id="t0845" value="08:45"><label for="t0845">08:45</label>
+
+                        <input type="radio" name="time" id="t0900" value="09:00"><label for="t0900">09:00</label>
+                        <input type="radio" name="time" id="t0915" value="09:15"><label for="t0915">09:15</label>
+                        <input type="radio" name="time" id="t0930" value="09:30"><label for="t0930">09:30</label>
+                        <input type="radio" name="time" id="t0945" value="09:45"><label for="t0945">09:45</label>
+
+                        <input type="radio" name="time" id="t1000" value="10:00"><label for="t1000">10:00</label>
+                        <input type="radio" name="time" id="t1015" value="10:15"><label for="t1015">10:15</label>
+                        <input type="radio" name="time" id="t1030" value="10:30"><label for="t1030">10:30</label>
+                        <input type="radio" name="time" id="t1045" value="10:45"><label for="t1045">10:45</label>
+
+                        <input type="radio" name="time" id="t1100" value="11:00"><label for="t1100">11:00</label>
+                        <input type="radio" name="time" id="t1115" value="11:15"><label for="t1115">11:15</label>
+                        <input type="radio" name="time" id="t1130" value="11:30"><label for="t1130">11:30</label>
+                        <input type="radio" name="time" id="t1145" value="11:45"><label for="t1145">11:45</label>
+                    </div>
+                </div>
+
+                <!-- SLOT BUỔI CHIỀU -->
+                <div class="time-section" id="afternoon-slots">
+                    <div class="time-grid">
+                        <input type="radio" name="time" id="t1300" value="13:00"><label for="t1300">13:00</label>
+                        <input type="radio" name="time" id="t1315" value="13:15"><label for="t1315">13:15</label>
+                        <input type="radio" name="time" id="t1330" value="13:30"><label for="t1330">13:30</label>
+                        <input type="radio" name="time" id="t1345" value="13:45"><label for="t1345">13:45</label>
+
+                        <input type="radio" name="time" id="t1400" value="14:00"><label for="t1400">14:00</label>
+                        <input type="radio" name="time" id="t1415" value="14:15"><label for="t1415">14:15</label>
+                        <input type="radio" name="time" id="t1430" value="14:30"><label for="t1430">14:30</label>
+                        <input type="radio" name="time" id="t1445" value="14:45"><label for="t1445">14:45</label>
+
+                        <input type="radio" name="time" id="t1500" value="15:00"><label for="t1500">15:00</label>
+                        <input type="radio" name="time" id="t1515" value="15:15"><label for="t1515">15:15</label>
+                        <input type="radio" name="time" id="t1530" value="15:30"><label for="t1530">15:30</label>
+                        <input type="radio" name="time" id="t1545" value="15:45"><label for="t1545">15:45</label>
+
+                        <input type="radio" name="time" id="t1600" value="16:00"><label for="t1600">16:00</label>
+                        <input type="radio" name="time" id="t1615" value="16:15"><label for="t1615">16:15</label>
+                        <input type="radio" name="time" id="t1630" value="16:30"><label for="t1630">16:30</label>
+                        <input type="radio" name="time" id="t1645" value="16:45"><label for="t1645">16:45</label>
+
+                        <input type="radio" name="time" id="t1700" value="17:00"><label for="t1700">17:00</label>
+                        <input type="radio" name="time" id="t1715" value="17:15"><label for="t1715">17:15</label>
+                        <input type="radio" name="time" id="t1730" value="17:30"><label for="t1730">17:30</label>
+                        <input type="radio" name="time" id="t1745" value="17:45"><label for="t1745">17:45</label>
+
+                        <input type="radio" name="time" id="t1800" value="18:00"><label for="t1800">18:00</label>
+                        <input type="radio" name="time" id="t1815" value="18:15"><label for="t1815">18:15</label>
+                        <input type="radio" name="time" id="t1830" value="18:30"><label for="t1830">18:30</label>
+                        <input type="radio" name="time" id="t1845" value="18:45"><label for="t1845">18:45</label>
+
+                        <input type="radio" name="time" id="t1900" value="19:00"><label for="t1900">19:00</label>
+                        <input type="radio" name="time" id="t1915" value="19:15"><label for="t1915">19:15</label>
+                        <input type="radio" name="time" id="t1930" value="19:30"><label for="t1930">19:30</label>
+                        <input type="radio" name="time" id="t1945" value="19:45"><label for="t1945">19:45</label>
+                    </div>
+                </div>
+                <div>
+                    <label>
+                        Lý do đến khám (Phụ huynh nên mô tả chi tiết)
+                        <input id="ly-do" type="text" name="ly_do" required>
+                    </label>
+                </div>
+                <input type="reset" name="reset" value="🔃 Nhập lại" class="btn-reset">
+
+            </fieldset>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    Xác nhận đặt lịch
+                </button>
+
+                <a href="https://www.facebook.com/bacsibencon" class="btn btn-facebook" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                        alt="Facebook" class="btn-icon">
+                    Facebook của Bác sĩ bên con
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

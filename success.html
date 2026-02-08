@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt lịch thành công</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Thư viện tạo PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- HEADER LOGO -->
+    <header class="header-logo">
+        <a href="trangchu.html" class="logo-link">
+            <img src="images/logo.png" alt="Logo phòng khám" class="logo">
+            <span class="company-name">Phòng khám Bác sĩ bên con</span>
+        </a>
+    </header>
+    <div class="result-card">
+
+        <!-- PHIẾU (PHẦN CHỤP PDF) -->
+        <div id="ticket" class="success">
+            <h1>✅ Đặt lịch khám thành công</h1>
+
+            <div class="summary">
+                <p><strong>🎫 Mã lịch hẹn:</strong> <span id="maHen"></span></p>
+                <p><strong>👶 Trẻ:</strong> <span id="childName"></span></p>
+                <p><strong>👨‍👩‍👧 Phụ huynh:</strong> <span id="parentName"></span></p>
+                <p><strong>📞 Số điện thoại:</strong> <span id="phone"></span></p>
+                <p><strong>🧑‍⚕️ Bác sĩ:</strong> <span id="doctor"></span></p>
+                <p><strong>📅 Ngày khám:</strong> <span id="date"></span></p>
+                <p><strong>🕒 Giờ khám:</strong> <span id="time"></span></p>
+                <p><strong>🩺 Buổi:</strong> <span id="session"></span></p>
+                <p id="reasonRow">
+                    <strong>📝 Lý do khám:</strong>
+                    <span id="reason"></span>
+                </p>
+            </div>
+
+            <p class="note">
+                📌 Quý phụ huynh vui lòng lưu lại thông tin phiếu khám và ghi nhớ mã lịch hẹn
+            </p>
+            <p class="note">
+                📌 Quý phụ huynh vui lòng đưa trẻ đến phòng khám
+                <strong>trước giờ hẹn 10 phút</strong>. <br>
+                Nếu không thể đến theo lịch hẹn, anh/chị vui lòng hủy sớm để phòng khám phục vụ bé khác ❤️ <br>
+                Nếu quá giờ hẹn 10 phút mà trẻ chưa đến khám, phiếu đặt lịch sẽ không còn giá trị.
+            </p>
+        </div>
+
+
+    </div>
+
+    <!-- NÚT HÀNH ĐỘNG (KHÔNG CHỤP PDF) -->
+    <div class="action-buttons-wrapper">
+        <div class="action-buttons">
+            <a id="zaloShareBtn" class="btn btn-primary" target="_blank">
+                <img src="images/zalo-icon.webp" alt="Zalo" class="zalo-icon">
+                Gửi lịch hẹn qua Zalo
+            </a>
+            <button onclick="savePDF()" class="btn btn-primary">
+                📄 Lưu phiếu đăng ký (PDF)
+            </button>
+            <button onclick="saveImage()" class="btn btn-primary">
+                📸 Lưu ảnh phiếu khám
+            </button>
+
+            <a href="index.html" class="btn btn-secondary">
+                🔄 Đặt lịch mới
+            </a>
+            <p style="margin-top:15px;">
+                👉 <a href="tracuu.html">Nhấn vào đây để hủy lịch khám</a>
+            </p>
+        </div>
+    </div>
+
+
+    </div>
+    <div id="capture-wrapper" class="capture-hidden">
+        <div class="capture-header">
+            <img src="images/logo.png" class="capture-logo">
+            <div class="capture-title">
+                <div class="clinic-name">Phòng khám Bác sĩ bên con</div>
+                <div class="clinic-sub">Phiếu xác nhận lịch khám</div>
+            </div>
+        </div>
+
+        <div id="ticketCapture"></div>
+        <p class="note">
+            🕓 <strong>Thời điểm đặt lịch:</strong>
+            <span id="createdAt"></span>
+        </p>
+        <div class="capture-footer">
+            📍 Địa chỉ: 88 Thanh Nhàn | ☎ 0985403030
+        </div>
+    </div>
+
+
+    <!-- JS -->
+    <script src="js/success.js"></script>
+
+    <!-- HÀM TẠO PDF -->
+    <script>
+        async function savePDF() {
+            const { jsPDF } = window.jspdf;
+            const wrapper = document.getElementById("capture-wrapper");
+
+            wrapper.style.display = "block";      // ⭐ THÊM
+            wrapper.classList.add("pdf-mode");
+
+            document.getElementById("ticketCapture").innerHTML =
+                document.getElementById("ticket").innerHTML;
+
+            await new Promise(r => setTimeout(r, 50));
+
+            const canvas = await html2canvas(wrapper, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: "#ffffff"
+            });
+
+            const imgData = canvas.toDataURL("image/png");
+
+            const pdf = new jsPDF({
+                orientation: "portrait",
+                unit: "mm",
+                format: "a4"
+            });
+
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const imgWidth = pageWidth - 20;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+            pdf.save("phieu-kham.pdf");
+
+            wrapper.classList.remove("pdf-mode");
+            wrapper.style.display = "none";
+        }
+
+
+    </script>
+
+
+
+
+    <!-- HÀM chụp ảnh -->
+    <script>
+        async function saveImage() {
+            const wrapper = document.getElementById("capture-wrapper");
+
+            wrapper.style.display = "block";
+            wrapper.classList.remove("pdf-mode");
+
+            document.getElementById("ticketCapture").innerHTML =
+                document.getElementById("ticket").innerHTML;
+
+            const canvas = await html2canvas(wrapper, {
+                scale: 2,
+                backgroundColor: "#ffffff"
+            });
+
+            const link = document.createElement("a");
+            link.href = canvas.toDataURL("image/png");
+            link.download = "phieu-kham.png";
+            link.click();
+
+            wrapper.style.display = "none";
+        }
+
+    </script>
+
+    </div>
+
+</body>
+
+</html>

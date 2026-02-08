@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký lịch học </title>
+
+</head>
+
+<body>
+    <center>
+        <div class="container">
+            <h1> Đăng ký khóa học </h1>
+            <form name="form1" action="">
+                <table>
+                    <tr>
+                        <td align="right">
+                            Họ đệm
+                        </td>
+                        <td>
+                            <input id="student-first-name" type="text" name="student_frist_name" required size="20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            Tên
+                        </td>
+                        <td>
+                            <input type="text" name="name" size="20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            Email
+                        </td>
+                        <td>
+                            <input type="email" name="Email" size="20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            Điện thoại
+                        </td>
+                        <td>
+                            <input name="phone" type="tel" size="20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            Giới tính
+                        </td>
+                        <td>
+                            <select name="gender">
+                                <option value="">-- Chọn</option>
+                                <option value="1">Nam</option>
+                                <option value="2">Nữ</option>
+                                <option value="3">Khác</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            Tuổi
+                        </td>
+                        <td>
+                            <input type="number" name="age" min="18" max="100" size="10">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            Khóa học <br>
+                            Ca học
+                        </td>
+                        <td>
+                            <select name="cuorse">
+                                <option value="">-- Chọn</option>
+                                <option value="1">Toán</option>
+                                <option value="2">Văn</option>
+                                <option value="3">Anh</option>
+                            </select> <br>
+                            <input name="session" type="radio"> Sáng
+                            <input name="session" type="radio"> Chiều
+                            <input name="session" type="radio"> Tối
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td align="right">
+                            Yêu cầu khác
+                        </td>
+                        <td>
+                            <textarea name="note" cols="40" rows="4"></textarea> <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <input type="reset" name="reset" value="Nhập lại">
+                            <input type="submit" name="submit" value="Gửi thông tin">
+                        </td>
+                    </tr>
+                </table> <br>
+
+                Họ đệm <input id="student-first-name" type="text" name="student_frist_name" required size="20"> <br>
+                Tên <input type="text" name="name" size="20"> <br>
+                Email <input type="email" name="Email" size="20"> <br>
+                Điện thoại <input name="phone" type="tel" size="20"> <br>
+                Giới tính
+                <select name="gender">
+                    <option value="">-- Chọn</option>
+                    <option value="1">Nam</option>
+                    <option value="2">Nữ</option>
+                    <option value="3">Khác</option>
+                </select> <br>
+                Tuổi <input type="number" name="age" min="18" max="100" size="10"> <br>
+                Khóa học
+                <select name="cuorse">
+                    <option value="">-- Chọn</option>
+                    <option value="1">Toán</option>
+                    <option value="2">Văn</option>
+                    <option value="3">Anh</option>
+                </select> <br>
+                Ca học <input name="session" type="radio"> Sáng
+                <input name="session" type="radio"> Chiều
+                <input name="session" type="radio"> Tối <br>
+                Hình thức học <input name="on" type="checkbox"> Online
+                <input name="off" type="checkbox"> Offline <br>
+                Yêu cầu khác <textarea name="note" cols="40" rows="4"></textarea> <br>
+                <input type="reset" name="reset" value="Nhập lại">
+                <input type="submit" name="submit" value="Gửi thông tin">
+            </form>
+        </div>
+    </center>
+</body>
+
+</html>
