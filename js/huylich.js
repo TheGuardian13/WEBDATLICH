@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const today = new Date().toISOString().split("T")[0];
     dateInput.setAttribute("min", today);
     const cancelBtn = document.getElementById("cancelAppointment");
+    //const API_BASE = "https://localhost:7100";
+    const API_BASE = "https://8f12-113-23-11-55.ngrok-free.app";
 
     // chỉ cho nhập số
     dienThoaiInput.addEventListener("input", () => {
@@ -36,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedAppointment = null;
 
         try {
-            const res = await fetch("https://localhost:7100/api/lichkham/tracuu", {
+            const res = await fetch(`${API_BASE}/api/lichkham/tracuu`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ dienThoai: phone, ngayKham: date })
@@ -194,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!ok) return;
 
         try {
-            const res = await fetch("https://localhost:7100/api/lichkham/huylich", {
+            const res = await fetch(`${API_BASE}/api/lichkham/huylich`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
