@@ -7,6 +7,7 @@
 MỖI NGÀY BẮT ĐẦU LÀM VIỆC
 
 1. Mở terminal trong thư mục project
+Ctrl + `
 2. Cập nhật code mới nhất từ GitHub
 
    git pull

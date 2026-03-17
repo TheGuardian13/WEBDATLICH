@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const today = new Date().toISOString().split("T")[0];
     dateInput.setAttribute("min", today);
     const cancelBtn = document.getElementById("cancelAppointment");
-    const API_BASE = "https://8f12-113-23-11-55.ngrok-free.app"; // tạo biến api ngrok để dễ chỉnh
+    const API_BASE = "https://unrequisite-federally-dann.ngrok-free.dev"; // tạo biến api ngrok để dễ chỉnh
     // const API_BASE = "https://localhost:7100"
 
     // chỉ cho nhập số
