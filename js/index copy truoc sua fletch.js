@@ -47,33 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let choPhepChonCa = false;
     let choPhepChonBacSi = false;
     let slotActiveMap = [];
-
-    // Sửa fletch
-    async function fetchJSON(url, options = {}) {
-        const res = await fetch(url, {
-            ...options,
-            headers: {
-                "Content-Type": "application/json",
-                "ngrok-skip-browser-warning": "true",
-                ...(options.headers || {})
-            }
-        });
-
-        const text = await res.text();
-
-        if (!res.ok) {
-            console.error("❌ API ERROR:", text);
-            throw new Error("API lỗi: " + res.status);
-        }
-
-        try {
-            return JSON.parse(text);
-        } catch (e) {
-            console.error("❌ API KHÔNG TRẢ JSON:", text);
-            throw new Error("Response không phải JSON");
-        }
-    }
-
+    
+    
 
     // =============================
     // 1. KHAI BÁO BIẾN – ELEMENT
@@ -272,7 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
         doctorSelect.classList.remove("select-disabled");
         doctorSelect.innerHTML = `<option>Đang tải bác sĩ...</option>`;
 
-        fetchJSON(`${API_BASE}/api/lichkham/bacsi?ngay=${ngay}`)
+        fetch(`${API_BASE}/api/lichkham/bacsi?ngay=${ngay}`)
+            .then(r => r.json())
             .then(data => {
 
                 doctorSelect.innerHTML = `<option value="">-- Chọn bác sĩ --</option>`;
@@ -298,7 +274,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         choPhepChonCa = true;
 
-        fetchJSON(`${API_BASE}/api/lichkham/cakham?ngay=${dateInput.value}&idBacSi=${idBacSi}`)
+        fetch(`${API_BASE}/api/lichkham/cakham?ngay=${dateInput.value}&idBacSi=${idBacSi}`)
+            .then(r => r.json())
             .then(data => {
                 caLamViec = data.map(c => c.idCaKham);
                 setCaVisual();
@@ -336,7 +313,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            fetchJSON(`${API_BASE}/api/lichkham/slot?ngay=${dateInput.value}&idBacSi=${doctorSelect.value}&idCa=${ca}`)
+            fetch(`${API_BASE}/api/lichkham/slot?ngay=${dateInput.value}&idBacSi=${doctorSelect.value}&idCa=${ca}`)
+                .then(r => r.json())
                 .then(data => {
 
                     slotActiveMap = (data.data ?? data).map(s => ({
@@ -434,10 +412,14 @@ document.addEventListener("DOMContentLoaded", () => {
             lyDoKham: lyDoKham.value.trim()
         };
 
-        fetchJSON(`${API_BASE}/api/lichkham/lichhen`, {
+        fetch(`${API_BASE}/api/lichkham/lichhen`, {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
         })
+            .then(r => r.json())
             .then(res => {
 
                 if (!res.success) {
