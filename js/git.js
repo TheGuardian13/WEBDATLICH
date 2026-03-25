@@ -59,3 +59,7 @@ Ví dụ không nên:
 "fix"
 "abc"
 */
+
+
+// Chạy ngrok
+// ngrok http 5146
