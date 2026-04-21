@@ -412,50 +412,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return slots;
     }
 
-    // Hàm dùng khi submit lỗi
-    function disableSelectedSlot(slotId) {
-        const radio = document.querySelector(
-            `input[name="slot"][data-slot-id="${slotId}"]`
-        );
-
-        if (radio) {
-            radio.disabled = true;
-
-            const label = document.querySelector(
-                `label[for="${radio.id}"]`
-            );
-
-            if (label) {
-                label.classList.add("disabled");
-            }
-        }
-
-        hiddenSlotId.value = "";
-    }
-    function disableSelectedSlot(slotId) {
-        const radio = document.querySelector(
-            `input[name="slot"][data-slot-id="${slotId}"]`
-        );
-
-        if (radio) {
-            radio.disabled = true;
-
-            const label = document.querySelector(
-                `label[for="${radio.id}"]`
-            );
-
-            if (label) {
-                label.classList.add("disabled");
-            }
-        }
-
-        hiddenSlotId.value = "";
-    }
-
     // =============================
     // SUBMIT
     // =============================
-
     bookingForm.addEventListener("submit", e => {
         e.preventDefault();
 
@@ -483,15 +442,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (!res.success) {
                     alert("❌ " + res.message);
-
-                    // 👉 1. Disable slot vừa chọn (nếu backend trả idSlot)
-                    if (res.slotId) {
-                        disableSelectedSlot(res.slotId);
-                    }
-
-                    // 👉 2. Reload lại slot (QUAN TRỌNG - nên dùng)
-                    reloadSlots();
-
                     return;
                 }
 
@@ -501,6 +451,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 window.location.href = "success.html";
+            })
+            .catch(() => {
+                alert("❌ Không kết nối được máy chủ");
             });
     });
 
