@@ -413,24 +413,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Hàm dùng khi submit lỗi
-    function disableSelectedSlot(slotId) {
-        const radio = document.querySelector(
-            `input[name="slot"][data-slot-id="${slotId}"]`
+    function reloadSlots() {
+
+        const selectedCa = document.querySelector(
+            'input[name="ID_CaKham"]:checked'
+        )?.value;
+
+        if (!selectedCa) return;
+
+        const ca = Number(selectedCa);
+        const config = CA_CONFIG[ca];
+        if (!config) return;
+
+        const allSlots = generateSlots(
+            config.start,
+            config.end,
+            config.startId
         );
 
-        if (radio) {
-            radio.disabled = true;
+        fetchJSON(`${API_BASE}/api/lichkham/slot?ngay=${dateInput.value}&idBacSi=${doctorSelect.value}&idCa=${ca}`)
+            .then(data => {
 
-            const label = document.querySelector(
-                `label[for="${radio.id}"]`
-            );
+                slotActiveMap = (data.data ?? data).map(s => ({
+                    idSlot: s.idSlot,
+                    idKhungGio: s.idKhungGio
+                }));
 
-            if (label) {
-                label.classList.add("disabled");
-            }
-        }
-
-        hiddenSlotId.value = "";
+                renderSlot(allSlots, slotActiveMap);
+            });
     }
     function disableSelectedSlot(slotId) {
         const radio = document.querySelector(
@@ -484,12 +494,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!res.success) {
                     alert("❌ " + res.message);
 
-                    // 👉 1. Disable slot vừa chọn (nếu backend trả idSlot)
-                    if (res.slotId) {
-                        disableSelectedSlot(res.slotId);
-                    }
+                    // disable slot vừa chọn (fallback nếu backend không trả)
+                    disableSelectedSlot(res.slotId || hiddenSlotId.value);
 
-                    // 👉 2. Reload lại slot (QUAN TRỌNG - nên dùng)
+                    // reload lại toàn bộ slot
                     reloadSlots();
 
                     return;
