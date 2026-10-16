@@ -1,9 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
-/* Import font Inter từ Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+a,
+button,
+label,
+select,
+input {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
 
 body {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -31,6 +48,9 @@ h1 {
 }
 
 fieldset {
+    min-width: 0;
+    /* mặc định fieldset = min-content, dễ làm tràn ngang trên màn hẹp */
+    margin: 0 0 16px;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 18px;
@@ -179,6 +199,7 @@ select:focus {
 
 .session-select label {
     flex: 1;
+    margin: 0;
     text-align: center;
     padding: 10px;
     border-radius: 8px;
@@ -218,6 +239,7 @@ select:focus {
 }
 
 .time-grid label {
+    margin: 0;
     height: 36px;
     line-height: 36px;
     text-align: center;
@@ -334,7 +356,7 @@ body {
     padding: 0;
 
     /* Nền ảnh */
-    background-image: url('../images/background.png');
+    background-image: url('../images/background.jpg');
     background-size: cover;
     /* ảnh phủ toàn màn hình */
     background-position: center;
@@ -379,8 +401,9 @@ body {
     gap: 8px;
     /* Khoảng cách giữa icon & text */
 
-    width: 300px;
-    /* Cố định chiều rộng */
+    width: 100%;
+    max-width: 300px;
+    /* Rộng tối đa 300px, co lại vừa màn hình hẹp */
     height: 48px;
     /* Cố định chiều cao */
     padding: 0 20px;
@@ -440,8 +463,11 @@ body {
     border: 2px solid #0d6efd;
     /* viền xanh */
     border-radius: 9px;
-    height: 30px;
-    width: 100px;
+    height: 40px;
+    width: auto;
+    padding: 0 16px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .btn-reset:hover {
@@ -545,6 +571,15 @@ body {
     border-left: 5px solid #fd0d0d;
     font-size: 14px;
     color: #333;
+    text-wrap: pretty;
+}
+
+/* Giữ nguyên một cụm từ trên cùng một dòng, tránh ngắt dòng giữa chừng */
+.nw,
+.summary p > strong,
+.appointment-row > strong,
+.appointment-header .label {
+    white-space: nowrap;
 }
 
 .action-buttons-wrapper {
@@ -552,24 +587,28 @@ body {
 }
 
 /* Nút Primary – quan trọng */
-.btn--primary {
+.btn--primary,
+.btn-primary {
     background-color: #0d6efd;
     /* xanh nước biển */
     color: #fff;
 }
 
-.btn--primary:hover {
+.btn--primary:hover,
+.btn-primary:hover {
     background-color: #0b5ed7;
     /* xanh đậm khi hover */
 }
 
 /* Nút Secondary – hỗ trợ */
-.btn--secondary {
+.btn--secondary,
+.btn-secondary {
     background-color: #16b90a;
     color: #fff;
 }
 
-.btn--secondary:hover {
+.btn--secondary:hover,
+.btn-secondary:hover {
     background-color: #0a9b22;
 }
 
@@ -692,6 +731,8 @@ body {
 
 /* Header: mã khám */
 .appointment-header {
+    padding-right: 34px;
+    /* chừa chỗ cho checkbox tròn góc phải */
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
@@ -872,4 +913,192 @@ button.danger {
 
 .error-message.active {
     display: block;
+}
+
+/* =====================================================
+   RESPONSIVE – ĐIỆN THOẠI
+===================================================== */
+
+/* Máy tính bảng nhỏ / điện thoại */
+@media (max-width: 600px) {
+
+    /* Ảnh nền 1.7MB + background-attachment:fixed gây giật/ngốn RAM trên mobile */
+    body {
+        background-attachment: scroll;
+    }
+
+    .header-logo {
+        padding: 8px 16px;
+        margin-bottom: 8px;
+    }
+
+    .header-logo .company-name {
+        font-size: 15px;
+    }
+
+    /* Thẻ nội dung: sát lề hơn, nhiều chỗ cho form */
+    .container,
+    .result-card {
+        margin: 8px 12px 24px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    h1,
+    .container h1 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    fieldset {
+        padding: 12px 14px 4px;
+        margin-bottom: 14px;
+    }
+
+    legend {
+        padding: 0 6px;
+        font-weight: 600;
+        color: #0d6efd;
+    }
+
+    /* Nhãn nằm TRÊN ô nhập thay vì cột trái 120px */
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+
+    .form-row label {
+        margin-bottom: 0;
+    }
+
+    .form-row input,
+    .form-row select {
+        max-width: none;
+    }
+
+    /* Ô nhập: full chiều ngang, cao >= 46px, chữ 16px để iOS không tự phóng to khi focus */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    .select-small,
+    .select-medium,
+    .select-large {
+        width: 100%;
+        max-width: none;
+        min-height: 46px;
+        font-size: 16px;
+    }
+
+    /* Chọn buổi */
+    .session-select {
+        gap: 8px;
+    }
+
+    .session-select label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 6px;
+        font-size: 15px;
+    }
+
+    /* Slot giờ: 4 cột (6 cột => ô chỉ ~38px, khó bấm) */
+    .time-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .time-section {
+        margin-bottom: 16px;
+    }
+
+    .time-grid label {
+        height: 44px;
+        line-height: 44px;
+        font-size: 15px;
+        border-radius: 8px;
+    }
+
+    /* Nút full chiều ngang, dễ bấm bằng ngón cái */
+    .btn,
+    .btn--block,
+    .center-action .btn {
+        width: 100%;
+        max-width: none;
+        height: 50px;
+    }
+
+    .btn--small {
+        width: auto;
+    }
+
+    .btn-reset {
+        width: 100%;
+        height: 44px;
+        margin-bottom: 14px;
+    }
+
+    .btn--danger:hover {
+        transform: none;
+    }
+
+    /* Phiếu / tra cứu */
+    .summary {
+        max-width: none;
+        margin: 16px 0;
+        padding: 14px;
+    }
+
+    .summary p {
+        overflow-wrap: anywhere;
+    }
+
+    .appointment-item {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .appointment-header .code,
+    #maHen {
+        font-size: 22px;
+    }
+
+    .lookup-actions {
+        flex-direction: column;
+    }
+
+    .form-actions {
+        margin-top: 8px;
+    }
+}
+
+/* Điện thoại rất nhỏ (iPhone SE, 320px) */
+@media (max-width: 360px) {
+    .container,
+    .result-card {
+        margin-left: 8px;
+        margin-right: 8px;
+        padding: 12px;
+    }
+
+    .time-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .session-select label {
+        font-size: 14px;
+    }
+}
+
+/* Tai thỏ / thanh điều hướng iOS */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
 }

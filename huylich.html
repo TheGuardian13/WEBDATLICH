@@ -27,7 +27,7 @@
             <form id="lookupForm" class="summary">
                 <p>
                     <label>📞 Số điện thoại</label>
-                    <input type="tel" id="phone" maxlength="10" inputmode="numeric" placeholder="SĐT đặt lịch" required>
+                    <input type="tel" id="phone" maxlength="10" inputmode="numeric" autocomplete="tel" enterkeyhint="search" placeholder="SĐT đặt lịch" required>
                 </p>
                 <p>
                     <label>📅 Ngày khám</label>
@@ -76,9 +76,9 @@
         <div id="ticketCapture"></div>
         <p class="note">
             📌 Quý phụ huynh vui lòng đưa trẻ đến phòng khám
-            <strong>trước giờ hẹn 10 phút</strong>. <br>
-            Nếu không thể đến theo lịch hẹn, anh/chị vui lòng hủy sớm để phòng khám phục vụ bé khác ❤️ <br>
-            Nếu quá giờ hẹn 10 phút mà trẻ chưa đến khám, phiếu đặt lịch sẽ không còn giá trị.
+            <strong class="nw">trước giờ hẹn 10 phút</strong>. <br>
+            Nếu <span class="nw">không thể</span> đến theo lịch hẹn, anh/chị vui lòng hủy sớm để <span class="nw">phòng khám</span> phục vụ bé khác ❤️ <br>
+            Nếu quá giờ hẹn <span class="nw">10 phút</span> mà trẻ chưa đến khám, <span class="nw">phiếu đặt lịch</span> sẽ không còn giá trị.
         </p>
 
         <p class="note">

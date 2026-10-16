@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Đặt lịch phòng khám</title>
     <meta name="description" content="Đặt lịch khám nhanh chóng tại phòng khám nhi, tiết kiệm thời gian chờ đợi.">
@@ -50,7 +50,7 @@
 
                 <div class="form-row">
                     <label for="hoTenTre">Họ tên trẻ</label>
-                    <input id="hoTenTre" name="HoTenTre" type="text" required placeholder="Vui lòng ghi đầy đủ họ tên">
+                    <input id="hoTenTre" name="HoTenTre" type="text" autocomplete="off" enterkeyhint="next" required placeholder="Vui lòng ghi đầy đủ họ tên">
                 </div>
 
                 <div class="form-row">
@@ -76,13 +76,13 @@
 
                 <div class="form-row">
                     <label for="tenNguoiDat">Họ tên người đặt</label>
-                    <input id="tenNguoiDat" name="TenNguoiDat" type="text" required
+                    <input id="tenNguoiDat" name="TenNguoiDat" type="text" autocomplete="name" enterkeyhint="next" required
                         placeholder="Vui lòng ghi đầy đủ họ tên">
                 </div>
 
                 <div class="form-row">
                     <label for="dienThoai">Số điện thoại</label>
-                    <input id="dienThoai" name="DienThoai" type="tel" maxlength="10" inputmode="numeric"
+                    <input id="dienThoai" name="DienThoai" type="tel" maxlength="10" inputmode="numeric" autocomplete="tel"
                         placeholder="SĐT nên có Zalo" required>
                 </div>
             </fieldset>
@@ -130,7 +130,7 @@
                 <!-- LÝ DO KHÁM -->
                 <div class="form-row">
                     <label for="lyDoKham">Lý do khám</label>
-                    <input id="lyDoKham" name="LyDoKham" type="text" required
+                    <input id="lyDoKham" name="LyDoKham" type="text" enterkeyhint="done" required
                         placeholder="Vui lòng mô tả chi tiết triệu chứng của trẻ">
                 </div>
 
